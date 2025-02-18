@@ -47,6 +47,7 @@ THIRD_PARTY_APPS = []
 LOCAL_APPS = [
     'core.apps.CoreConfig',
     'accounts.apps.AccountsConfig',
+    'services.apps.ServicesConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -142,3 +143,6 @@ if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CONTACT_EMAIL = config('CONTACT_EMAIL')
+
+# Pagination
+PAGINATION = config('PAGINATION', default=3, cast=int)
