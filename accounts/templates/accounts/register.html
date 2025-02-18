@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Registar{% endblock %}
+
+{% block content %}
+<main>
+  <!-- info página -->
+  <section class="pagina-info">
+      <div class="container">
+          <p>
+              Registre-se para se tornar um ninja
+          </p>
+      </div>
+  </section>
+  <!-- Contato Form -->
+  <section class="form-contato-secao prestador-form">
+      <div class="container">
+          <h2>Cadastre-se</h2>
+          <div class="divisor-form">
+              <div class="status"></div>
+          </div>
+          <form class="form-contato" method="POST">
+              {% csrf_token %}
+              <div class="form-item cel">
+                  <label for="cel">Utilizador*</label>
+                    {{ form.username }}
+              </div>
+              <div class="form-item nome">
+                  <label for="nome">Nome*</label>
+                  {{ form.first_name }}
+              </div>
+              <div class="form-item sobrenome">
+                  <label for="nome">Sobrenome*</label>
+                  {{ form.last_name }}
+              </div>
+              <div class="form-item email">
+                  <label for="email">E-mail*</label>
+                  {{ form.email }}
+              </div>
+              <div class="form-item senha">
+                  <label for="senha">Password*</label>
+                  {{ form.password1 }}
+              </div>
+              <div class="form-item confirmar-senha">
+                  <label for="confirmar-senha">Confirmar password*</label>
+                    {{ form.password2 }}
+              </div>
+              <button type="submit" class="btn-green">ENVIAR</button>
+          </form>
+      </div>
+  </section>
+</main>
+{% endblock content %}

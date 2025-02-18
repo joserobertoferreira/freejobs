@@ -6,6 +6,12 @@ extend-exclude = ['migrations']
 preview = true
 select = ['I', 'F', 'E', 'W', 'PL', 'PT']
 
+# 2. Avoid enforcing line-length violations (`E501`)
+ignore = ['E501']
+
+# 3. Avoid trying to fix flake8-bugbear (`B`) violations.
+unfixable = ['B']
+
 [tool.ruff.format]
 preview = true
 quote-style = 'single'
