@@ -13,19 +13,19 @@
             SOLUÇÃO EM UM PASSO<br>
             PARA OS SEUS SERVIÇOS
         </h1>
-        <form class="search-banner">
-            <select name="" id="">
-                <option value="sp" selected>São Paulo</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="sp">São Paulo</option>
-                <option value="sp">São Paulo</option>
+        <form class="search-banner" method="get" action="{% url "services:list" %}">
+            <select name="city" id="">
+                <option value="" selected>Cidade</option>
+                {% for city in cities %}
+                    <option value="{{ city }}">{{ city }}</option>
+                {% endfor %}
             </select>
             <div class="search-buttons">
                 <label for="search">
                     <img src="{% static 'img/icon-search.svg' %}" alt="" width="20px">
                 </label>
-                <input type="text" name="" id="search" placeholder="O que você está procurando...">
-                <button>
+                <input type="text" name="q" id="search" placeholder="O que você está procurando...">
+                <button type="submit">
                     <img src="{% static 'img/icone-right-arrow.svg' %}" alt="" width="25px">
                 </button>
             </div>
@@ -44,96 +44,22 @@
             conteúdo legível de uma página ao observar seu layout.
         </p>
         <div class="servicos-grid">
-            <div class="servico-item">
-                <img src="https://bytesed.com/tf/qixer/qixer_html/assets/img/service/s1.jpg" alt="" width="100%"
-                    class="img-destaque">
-                <div class="servico-body">
-                    <div class="avatar">
-                        <img src="{% static 'img/cleyson-lima.jpg' %}" alt="Foto professor" width="45px" class="img-user">
-                        <p>Cleyson Lima</p>
+            {% for service in top_services %}
+                <div class="servico-item">
+                    <img src="{{ service.picture.url }}" alt="" width="100%"
+                        class="img-destaque">
+                    <div class="servico-body">
+                        <div class="avatar">
+                            <img src="{{ service.user.profile.avatar.url }}" alt="Foto prestador" width="45px" class="img-user">
+                            <p>{{ service.user.get_full_name }}</p>
+                        </div>
+                        <h3>{{ service.name }}</h3>
+                        <p>{{ service.description }}</p>
+                        <a href="" class="servico-link">Iniciando em</a><span> ${{ service.price }}</span>
+                        <a href="{% url "services:detail" pk=service.pk %}" class="servico-agendar">Ver detalhes</a>
                     </div>
-                    <h3>Programação Front-end</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-                    <a href="" class="servico-link">Iniciando em</a><span> R$100</span>
-                    <a href="./detalhes.html" class="servico-agendar">Ver detalhes</a>
                 </div>
-            </div>
-            <div class="servico-item">
-                <img src="https://bytesed.com/tf/qixer/qixer_html/assets/img/service/s1.jpg" alt="" width="100%"
-                    class="img-destaque">
-                <div class="servico-body">
-                    <div class="avatar">
-                        <img src="{% static 'img/cleyson-lima.jpg' %}" alt="Foto professor" width="45px" class="img-user">
-                        <p>Cleyson Lima</p>
-                    </div>
-                    <h3>Programação Front-end</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-                    <a href="" class="servico-link">Iniciando em</a><span> R$100</span>
-                    <a href="./detalhes.html" class="servico-agendar">Ver detalhes</a>
-                </div>
-            </div>
-            <div class="servico-item">
-                <img src="https://bytesed.com/tf/qixer/qixer_html/assets/img/service/s1.jpg" alt="" width="100%"
-                    class="img-destaque">
-                <div class="servico-body">
-                    <div class="avatar">
-                        <img src="{% static 'img/cleyson-lima.jpg' %}" alt="Foto professor" width="45px" class="img-user">
-                        <p>Cleyson Lima</p>
-                    </div>
-                    <h3>Programação Front-end</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-                    <a href="" class="servico-link">Iniciando em</a><span> R$100</span>
-                    <a href="./detalhes.html" class="servico-agendar">Ver detalhes</a>
-                </div>
-            </div>
-            <div class="servico-item">
-                <img src="https://bytesed.com/tf/qixer/qixer_html/assets/img/service/s1.jpg" alt="" width="100%"
-                    class="img-destaque">
-                <div class="servico-body">
-                    <div class="avatar">
-                        <img src="{% static 'img/cleyson-lima.jpg' %}" alt="Foto professor" width="45px" class="img-user">
-                        <p>Cleyson Lima</p>
-                    </div>
-                    <h3>Programação Front-end</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-                    <a href="" class="servico-link">Iniciando em</a><span> R$100</span>
-                    <a href="./detalhes.html" class="servico-agendar">Ver detalhes</a>
-                </div>
-            </div>
-            <div class="servico-item">
-                <img src="https://bytesed.com/tf/qixer/qixer_html/assets/img/service/s1.jpg" alt="" width="100%"
-                    class="img-destaque">
-                <div class="servico-body">
-                    <div class="avatar">
-                        <img src="{% static 'img/cleyson-lima.jpg' %}" alt="Foto professor" width="45px" class="img-user">
-                        <p>Cleyson Lima</p>
-                    </div>
-                    <h3>Programação Front-end</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-                    <a href="" class="servico-link">Iniciando em</a><span> R$100</span>
-                    <a href="./detalhes.html" class="servico-agendar">Ver detalhes</a>
-                </div>
-            </div>
-            <div class="servico-item">
-                <img src="https://bytesed.com/tf/qixer/qixer_html/assets/img/service/s1.jpg" alt="" width="100%"
-                    class="img-destaque">
-                <div class="servico-body">
-                    <div class="avatar">
-                        <img src="{% static 'img/cleyson-lima.jpg' %}" alt="Foto professor" width="45px" class="img-user">
-                        <p>Cleyson Lima</p>
-                    </div>
-                    <h3>Programação Front-end</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-                    <a href="" class="servico-link">Iniciando em</a><span> R$100</span>
-                    <a href="./detalhes.html" class="servico-agendar">Ver detalhes</a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
   </section>

@@ -13,6 +13,10 @@ class UserProfile(models.Model):
     region = models.CharField(max_length=2, blank=True)
     about = models.TextField(blank=True)
     avatar = models.ImageField(upload_to=avatar_upload_to, blank=True, null=True)
+    average_rating = models.DecimalField(
+        max_digits=3, decimal_places=2, default=0, editable=False
+    )
+    total_reviews = models.PositiveIntegerField(default=0, editable=False)
 
     def __str__(self):
         return self.user.username

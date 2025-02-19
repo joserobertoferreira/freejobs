@@ -18,3 +18,8 @@ def register(request):
         return redirect('admin:login')
 
     return render(request, 'accounts/register.html', {'form': register_form})
+
+
+def detail(request, pk):
+    user = UserProfile.objects.get(pk=pk)
+    return render(request, 'accounts/detail.html', {'user': user})

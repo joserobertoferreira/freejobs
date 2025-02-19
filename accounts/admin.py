@@ -12,6 +12,8 @@ class UserProfileAdmin(admin.ModelAdmin):
         'phone',
         'city',
         'region',
+        'average_rating',
+        'total_reviews',
     )
     readonly_fields = ('user',)
 
